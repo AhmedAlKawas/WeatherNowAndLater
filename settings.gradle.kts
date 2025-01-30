@@ -22,5 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "WeatherNowAndLater"
 include(":app")
 include(":core")
-include(":data")
 include(":framework")
+include(":data")
