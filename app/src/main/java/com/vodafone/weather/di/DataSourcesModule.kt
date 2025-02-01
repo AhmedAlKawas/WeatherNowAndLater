@@ -2,6 +2,7 @@ package com.vodafone.weather.di
 
 import com.vodafone.data.data_sources.CitiesDataSource
 import com.vodafone.data.data_sources.CitiesDataSourceImpl
+import com.vodafone.data.room_db.daos.CitiesDao
 import com.vodafone.data.services.CitiesServices
 import dagger.Module
 import dagger.Provides
@@ -15,7 +16,13 @@ object DataSourcesModule {
 
     @Provides
     @Singleton
-    fun provideCitiesDataSource(citiesServices: CitiesServices): CitiesDataSource =
-        CitiesDataSourceImpl(citiesServices = citiesServices)
+    fun provideCitiesDataSource(
+        citiesServices: CitiesServices,
+        citiesDao: CitiesDao
+    ): CitiesDataSource =
+        CitiesDataSourceImpl(
+            citiesServices = citiesServices,
+            dao = citiesDao
+        )
 
 }

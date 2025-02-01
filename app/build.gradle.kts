@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -65,9 +66,14 @@ dependencies {
 
     implementation(project(":city_input"))
     implementation(project(":data"))
+    implementation(project(":core"))
 
     implementation(libs.retrofit)
 
     implementation(libs.converter.gson)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
 
 }

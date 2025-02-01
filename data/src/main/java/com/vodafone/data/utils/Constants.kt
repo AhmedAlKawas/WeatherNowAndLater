@@ -6,4 +6,6 @@ object Constants {
 
     const val CITIES_LIMIT = 5
 
+    const val DATABASE_NAME = "WEATHER_APP.db"
+
 }

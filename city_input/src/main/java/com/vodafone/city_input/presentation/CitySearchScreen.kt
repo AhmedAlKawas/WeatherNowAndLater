@@ -1,5 +1,6 @@
 package com.vodafone.city_input.presentation
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -25,19 +26,29 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.vodafone.core.models.GetSearchCitiesResponse
 import kotlinx.coroutines.delay
 
 @Composable
-fun SearchCityScreen(viewModel: CitiesViewModel = hiltViewModel()) {
+fun SearchCityScreen(navController: NavController, viewModel: CitiesViewModel = hiltViewModel()) {
 
     var query by remember { mutableStateOf("") }
     val cities by viewModel.resultCities.collectAsState(initial = emptyList())
+    val citySaved by viewModel.currentCity.collectAsState(initial = null)
 
     LaunchedEffect(query) {
         if (query.length >= 2) {
             delay(300)
             viewModel.getCities(query)
+        }
+    }
+
+    LaunchedEffect(citySaved) {
+        if (citySaved != null) {
+            navController.navigate("home_screen") {
+                popUpTo("search_city_screen") { inclusive = true }  // Remove from backstack
+            }
         }
     }
 
@@ -55,7 +66,7 @@ fun SearchCityScreen(viewModel: CitiesViewModel = hiltViewModel()) {
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
             keyboardActions = KeyboardActions(
                 onSearch = {
-                    viewModel.getCities(query) // Call ViewModel to fetch cities
+                    viewModel.getCities(query)
                 }
             )
         )
@@ -69,7 +80,9 @@ fun SearchCityScreen(viewModel: CitiesViewModel = hiltViewModel()) {
         } else {
             LazyColumn {
                 items(cities) { city ->
-                    CityItem(city = city)
+                    CityItem(city = city) {
+                        viewModel.setCurrentCity(city)
+                    }
                 }
             }
         }
@@ -78,10 +91,11 @@ fun SearchCityScreen(viewModel: CitiesViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun CityItem(city: GetSearchCitiesResponse) {
+fun CityItem(city: GetSearchCitiesResponse, onClick: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable { onClick() }
             .padding(8.dp)
     ) {
         city.name?.let { name -> Text(text = name, fontWeight = FontWeight.Bold) }
