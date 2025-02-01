@@ -1,6 +1,7 @@
 package com.vodafone.city_input.presentation
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,20 +14,32 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.vodafone.core.models.GetSearchCitiesResponse
+import kotlinx.coroutines.delay
 
 @Composable
 fun SearchCityScreen(viewModel: CitiesViewModel = hiltViewModel()) {
 
-    var query = ""
+    var query by remember { mutableStateOf("") }
     val cities by viewModel.resultCities.collectAsState(initial = emptyList())
+
+    LaunchedEffect(query) {
+        if (query.length >= 2) {
+            delay(300)
+            viewModel.getCities(query)
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -49,8 +62,9 @@ fun SearchCityScreen(viewModel: CitiesViewModel = hiltViewModel()) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Display the list of cities
-        if (cities.isEmpty()) {
+        if (query.isEmpty()) {
+            Text("Start typing to search for cities.")
+        } else if (cities.isEmpty()) {
             Text("No cities found. Try another search.")
         } else {
             LazyColumn {
@@ -70,7 +84,10 @@ fun CityItem(city: GetSearchCitiesResponse) {
             .fillMaxWidth()
             .padding(8.dp)
     ) {
-        city.name?.let { Text(text = it, fontWeight = FontWeight.Bold) }
-        city.country?.let { Text(text = it) }
+        city.name?.let { name -> Text(text = name, fontWeight = FontWeight.Bold) }
+        Row {
+            city.state?.let { state -> Text(text = state) }
+            city.country?.let { country -> Text(text = " ,$country") }
+        }
     }
 }

@@ -1,9 +1,9 @@
-package com.vodafone.framework.network.data_sources
+package com.vodafone.data.data_sources
 
 import com.vodafone.core.models.GetSearchCitiesResponse
-import com.vodafone.data.data_sources.CitiesDataSource
+import com.vodafone.data.services.CitiesServices
 import com.vodafone.data.utils.Constants.API_KEY
-import com.vodafone.framework.network.services.CitiesServices
+import com.vodafone.data.utils.Constants.CITIES_LIMIT
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -11,6 +11,6 @@ class CitiesDataSourceImpl @Inject constructor(private val citiesServices: Citie
     CitiesDataSource {
 
     override suspend fun getCitiesByText(query: String): Response<List<GetSearchCitiesResponse>> =
-        citiesServices.getCitiesByText(query, API_KEY)
+        citiesServices.getCitiesByText(query, API_KEY, CITIES_LIMIT)
 
 }

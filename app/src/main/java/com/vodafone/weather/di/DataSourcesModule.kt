@@ -1,8 +1,8 @@
-package com.vodafone.framework.di
+package com.vodafone.weather.di
 
 import com.vodafone.data.data_sources.CitiesDataSource
-import com.vodafone.framework.network.data_sources.CitiesDataSourceImpl
-import com.vodafone.framework.network.services.CitiesServices
+import com.vodafone.data.data_sources.CitiesDataSourceImpl
+import com.vodafone.data.services.CitiesServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

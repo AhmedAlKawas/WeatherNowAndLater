@@ -65,7 +65,9 @@ dependencies {
 
     implementation(project(":city_input"))
     implementation(project(":data"))
-    implementation(project(":framework"))
-    implementation(project(":core"))
+
+    implementation(libs.retrofit)
+
+    implementation(libs.converter.gson)
 
 }

@@ -53,6 +53,8 @@ dependencies {
 
     implementation(libs.retrofit)
 
+    implementation(libs.converter.gson)
+
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.hilt.compiler)

@@ -1,4 +1,4 @@
-package com.vodafone.framework.network.services
+package com.vodafone.data.services
 
 import com.vodafone.core.models.GetSearchCitiesResponse
 import retrofit2.Response
@@ -10,7 +10,8 @@ interface CitiesServices {
     @GET("geo/1.0/direct")
     suspend fun getCitiesByText(
         @Query("q") query: String,
-        @Query("appid") apiKey: String
+        @Query("appid") apiKey: String,
+        @Query("limit") limit: Int
     ): Response<List<GetSearchCitiesResponse>>
 
 }

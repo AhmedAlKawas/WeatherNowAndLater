@@ -1,4 +1,4 @@
-package com.vodafone.data.repos.citiies
+package com.vodafone.city_input.repo
 
 import com.vodafone.core.models.GetSearchCitiesResponse
 import com.vodafone.data.data_sources.CitiesDataSource
