@@ -63,4 +63,9 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
+    implementation(project(":city_input"))
+    implementation(project(":data"))
+    implementation(project(":framework"))
+    implementation(project(":core"))
+
 }

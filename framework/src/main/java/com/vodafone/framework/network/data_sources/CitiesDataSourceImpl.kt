@@ -5,8 +5,10 @@ import com.vodafone.data.data_sources.CitiesDataSource
 import com.vodafone.data.utils.Constants.API_KEY
 import com.vodafone.framework.network.services.CitiesServices
 import retrofit2.Response
+import javax.inject.Inject
 
-class CitiesDataSourceImpl(private val citiesServices: CitiesServices) : CitiesDataSource {
+class CitiesDataSourceImpl @Inject constructor(private val citiesServices: CitiesServices) :
+    CitiesDataSource {
 
     override suspend fun getCitiesByText(query: String): Response<List<GetSearchCitiesResponse>> =
         citiesServices.getCitiesByText(query, API_KEY)

@@ -6,6 +6,7 @@ import com.vodafone.city_input.use_cases.GetCitiesByText
 import com.vodafone.core.models.GetSearchCitiesResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,7 +16,7 @@ class CitiesViewModel @Inject constructor(private val getCitiesByText: GetCities
 
     private val _resultCities: MutableSharedFlow<List<GetSearchCitiesResponse>> =
         MutableSharedFlow()
-    val resultCities: MutableSharedFlow<List<GetSearchCitiesResponse>> = _resultCities
+    val resultCities: SharedFlow<List<GetSearchCitiesResponse>> = _resultCities
 
     fun getCities(query: String) {
 

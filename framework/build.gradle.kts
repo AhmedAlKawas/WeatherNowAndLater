@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.retrofit)
 
     implementation(libs.hilt.android)
+    kotlin("kapt")
 
     implementation(libs.converter.gson)
 
