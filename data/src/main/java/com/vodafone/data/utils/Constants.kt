@@ -8,4 +8,6 @@ object Constants {
 
     const val DATABASE_NAME = "WEATHER_APP.db"
 
+    const val METRIC = "metric"
+
 }

@@ -1,8 +1,11 @@
 package com.vodafone.weather.di
 
-import com.vodafone.data.data_sources.CitiesDataSource
 import com.vodafone.city_input.repo.CitiesRepo
 import com.vodafone.city_input.repo.CitiesRepoImpl
+import com.vodafone.current_city.repo.CurrentCityWeatherRepo
+import com.vodafone.current_city.repo.CurrentCityWeatherRepoImpl
+import com.vodafone.data.data_sources.cities.CitiesDataSource
+import com.vodafone.data.data_sources.weather.WeatherDataSource
 import com.vodafone.weather.repo.CurrentCityRepo
 import com.vodafone.weather.repo.CurrentCityRepoImpl
 import dagger.Module
@@ -24,5 +27,16 @@ object ReposModule {
     @Singleton
     fun provideCurrentCityRepo(citiesDataSource: CitiesDataSource): CurrentCityRepo =
         CurrentCityRepoImpl(citiesDataSource = citiesDataSource)
+
+    @Provides
+    @Singleton
+    fun provideWeatherRepo(
+        weatherDataSource: WeatherDataSource,
+        citiesDataSource: CitiesDataSource
+    ): CurrentCityWeatherRepo =
+        CurrentCityWeatherRepoImpl(
+            weatherDataSource = weatherDataSource,
+            citiesDataSource = citiesDataSource
+        )
 
 }

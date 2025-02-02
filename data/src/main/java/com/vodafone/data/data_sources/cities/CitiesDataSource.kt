@@ -1,4 +1,4 @@
-package com.vodafone.data.data_sources
+package com.vodafone.data.data_sources.cities
 
 import com.vodafone.core.models.CurrentCity
 import com.vodafone.core.models.GetSearchCitiesResponse

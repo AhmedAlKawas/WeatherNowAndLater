@@ -1,6 +1,7 @@
 package com.vodafone.weather.di
 
 import com.vodafone.data.services.CitiesServices
+import com.vodafone.data.services.WeatherServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,6 +27,12 @@ object NetworkModule {
     @Singleton
     fun provideCitiesServices(retrofit: Retrofit): CitiesServices {
         return retrofit.create(CitiesServices::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideWeatherServices(retrofit: Retrofit): WeatherServices {
+        return retrofit.create(WeatherServices::class.java)
     }
 
 }

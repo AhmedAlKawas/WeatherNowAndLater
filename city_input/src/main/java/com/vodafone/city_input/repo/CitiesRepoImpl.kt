@@ -2,7 +2,7 @@ package com.vodafone.city_input.repo
 
 import com.vodafone.core.models.CurrentCity
 import com.vodafone.core.models.GetSearchCitiesResponse
-import com.vodafone.data.data_sources.CitiesDataSource
+import com.vodafone.data.data_sources.cities.CitiesDataSource
 import retrofit2.Response
 import javax.inject.Inject
 

@@ -14,7 +14,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.vodafone.city_input.presentation.SearchCityScreen
 import com.vodafone.core.models.CurrentCity
-import com.vodafone.weather.ui.theme.WeatherNowAndLaterTheme
+import com.vodafone.current_city.presentation.screens.HomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -54,6 +54,6 @@ fun WeatherNowAndLaterApp(mainViewModel: MainViewModel) {
         startDestination = if (currentCity == null) "search_city_screen" else "home_screen"
     ) {
         composable("search_city_screen") { SearchCityScreen(navController) }
-        composable("home_screen") { WeatherNowAndLaterTheme {} }
+        composable("home_screen") { HomeScreen() }
     }
 }
