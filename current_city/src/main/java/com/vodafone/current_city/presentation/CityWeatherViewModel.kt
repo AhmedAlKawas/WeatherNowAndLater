@@ -1,7 +1,6 @@
 package com.vodafone.current_city.presentation
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.vodafone.current_city.states.GetCityWeatherDataState
 import com.vodafone.current_city.use_case.GetCurrentCityWeatherData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,18 +22,22 @@ class CityWeatherViewModel @Inject constructor(
 
         _cityWeatherData.emit(GetCityWeatherDataState.LoadingState)
 
-        val currentCityWeatherData = useCase(viewModelScope)
+        try {
+            val currentCityWeatherData = useCase()
 
-        if (currentCityWeatherData != null) {
-            _cityWeatherData.emit(
-                GetCityWeatherDataState.SuccessState(
-                    currentCityWeatherData
+            if (currentCityWeatherData != null) {
+                _cityWeatherData.emit(
+                    GetCityWeatherDataState.SuccessState(
+                        currentCityWeatherData
+                    )
                 )
-            )
-        } else {
-            _cityWeatherData.emit(
-                GetCityWeatherDataState.ErrorState
-            )
+            } else {
+                _cityWeatherData.emit(
+                    GetCityWeatherDataState.ErrorState
+                )
+            }
+        } catch (e: Exception) {
+            _cityWeatherData.emit(GetCityWeatherDataState.ErrorState)
         }
 
     }

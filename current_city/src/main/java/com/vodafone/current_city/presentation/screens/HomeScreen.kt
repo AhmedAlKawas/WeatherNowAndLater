@@ -10,7 +10,7 @@ import com.vodafone.current_city.presentation.CityWeatherViewModel
 import com.vodafone.current_city.states.GetCityWeatherDataState
 
 @Composable
-fun HomeScreen(viewModel: CityWeatherViewModel = hiltViewModel()) {
+fun HomeScreen(navController: NavController, viewModel: CityWeatherViewModel = hiltViewModel()) {
 
     val state by viewModel.cityWeatherData.collectAsState()
 
@@ -21,8 +21,7 @@ fun HomeScreen(viewModel: CityWeatherViewModel = hiltViewModel()) {
 
         is GetCityWeatherDataState.SuccessState -> {
             WeatherDataScreen(weatherData = currentState.weatherData) {
-                // Navigate to 7-day weather screen
-                // (You can implement navigation logic here)
+                navController.navigate("fore_cast_screen")
             }
         }
 

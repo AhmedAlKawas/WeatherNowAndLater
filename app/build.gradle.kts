@@ -68,6 +68,7 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":core"))
     implementation(project(":current_city"))
+    implementation(project(":forecast"))
 
     implementation(libs.retrofit)
 

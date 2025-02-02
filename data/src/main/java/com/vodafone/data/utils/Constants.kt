@@ -10,4 +10,6 @@ object Constants {
 
     const val METRIC = "metric"
 
+    const val NUMBER_OF_FORECAST_DAYS = 7
+
 }
