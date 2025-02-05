@@ -44,9 +44,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.material3.android)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(project(":data"))
     implementation(project(":core"))
@@ -60,5 +57,15 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin) // For better Kotlin support
+    testImplementation(libs.kotlinx.coroutines.test) // For coroutine testing
+
+    testImplementation(libs.turbine)
 
 }
