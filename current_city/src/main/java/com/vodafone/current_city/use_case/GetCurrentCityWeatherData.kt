@@ -13,10 +13,13 @@ class GetCurrentCityWeatherData @Inject constructor(
 
         val currentCity = currentCityRepo.getCurrentCity()
 
-        if (currentCity?.latitude != null) {
+        if (currentCity?.latitude != null && currentCity.longitude != null) {
 
             val currentCityWeather =
-                currentCityRepo.getCurrentCityWeather(currentCity.latitude, currentCity.longitude)
+                currentCityRepo.getCurrentCityWeather(
+                    currentCity.latitude!!,
+                    currentCity.longitude!!
+                )
 
 
             if (currentCityWeather.isSuccessful) {

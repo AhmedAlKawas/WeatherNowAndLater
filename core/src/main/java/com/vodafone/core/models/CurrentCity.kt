@@ -13,10 +13,10 @@ data class CurrentCity(
 
     val state: String,
 
-    val country: String,
+    val country: String?,
 
-    val latitude: Double,
+    val latitude: Double?,
 
-    val longitude: Double
+    val longitude: Double?
 
 )

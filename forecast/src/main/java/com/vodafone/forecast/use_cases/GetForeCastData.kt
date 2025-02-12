@@ -3,7 +3,6 @@ package com.vodafone.forecast.use_cases
 import com.vodafone.core.models.CityWeatherData
 import com.vodafone.data.utils.WeatherUtils.getWeatherFromIcon
 import com.vodafone.forecast.repo.ForeCastRepo
-import kotlinx.coroutines.CoroutineScope
 import javax.inject.Inject
 
 class GetForeCastData @Inject constructor(private val foreCastRepo: ForeCastRepo) {
@@ -12,10 +11,10 @@ class GetForeCastData @Inject constructor(private val foreCastRepo: ForeCastRepo
 
         val currentCity = foreCastRepo.getCurrentCity()
 
-        if (currentCity?.latitude != null) {
+        if (currentCity?.latitude != null && currentCity.longitude != null) {
 
             val dailyForeCast =
-                foreCastRepo.getDailyForeCast(currentCity.latitude, currentCity.longitude)
+                foreCastRepo.getDailyForeCast(currentCity.latitude!!, currentCity.longitude!!)
 
             if (dailyForeCast.isSuccessful && dailyForeCast.body()?.list?.isNotEmpty() == true) {
 
