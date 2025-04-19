@@ -13,10 +13,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.vodafone.city_input.presentation.SearchCityScreen
-import com.vodafone.core.models.CurrentCity
+import com.vodafone.data.models.entities.CurrentCityEntity
 import com.vodafone.current_city.presentation.screens.HomeScreen
 import com.vodafone.forecast.presentation.screens.ForeCastScreen
-import com.vodafone.weather.ui.theme.WeatherNowAndLaterTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,7 +38,7 @@ class MainActivity : ComponentActivity() {
 fun WeatherNowAndLaterApp(mainViewModel: MainViewModel) {
     val navController = rememberNavController()
 
-    val currentCity by produceState<CurrentCity?>(initialValue = null) {
+    val currentCity by produceState<CurrentCityEntity?>(initialValue = null) {
         value = mainViewModel.getCurrentCity()
     }
 

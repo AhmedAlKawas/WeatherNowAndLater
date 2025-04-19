@@ -1,7 +1,7 @@
 package com.vodafone.data.data_sources.weather
 
 import com.vodafone.core.models.getCurrentCityWeatherResponse.GetCurrentCityWeatherResponse
-import com.vodafone.core.models.getDailyForecastResponse.GetDailyForecastResponse
+import com.vodafone.data.models.dto.getDailyForecastResponse.GetDailyForecastResponse
 import retrofit2.Response
 import retrofit2.http.Query
 

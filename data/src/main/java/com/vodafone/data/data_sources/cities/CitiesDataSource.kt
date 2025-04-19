@@ -1,7 +1,7 @@
 package com.vodafone.data.data_sources.cities
 
-import com.vodafone.core.models.CurrentCity
-import com.vodafone.core.models.GetSearchCitiesResponse
+import com.vodafone.data.models.entities.CurrentCityEntity
+import com.vodafone.data.models.dto.GetSearchCitiesResponse
 import retrofit2.Response
 
 interface CitiesDataSource {
@@ -10,8 +10,8 @@ interface CitiesDataSource {
         query: String
     ): Response<List<GetSearchCitiesResponse>>
 
-    suspend fun getCurrentCity(): CurrentCity?
+    suspend fun getCurrentCity(): CurrentCityEntity?
 
-    suspend fun setCurrentCity(city: CurrentCity)
+    suspend fun setCurrentCity(city: CurrentCityEntity)
 
 }

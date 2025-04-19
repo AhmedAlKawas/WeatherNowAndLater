@@ -1,6 +1,6 @@
 package com.vodafone.current_city.states
 
-import com.vodafone.core.models.CityWeatherData
+import com.vodafone.domain.models.CityWeatherData
 
 sealed class GetCityWeatherDataState {
 

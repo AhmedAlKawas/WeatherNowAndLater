@@ -1,6 +1,6 @@
 package com.vodafone.data.utils
 
-import com.vodafone.core.models.Weather
+import com.vodafone.domain.models.Weather
 
 object WeatherUtils {
 

@@ -1,7 +1,7 @@
 package com.vodafone.data.data_sources.cities
 
-import com.vodafone.core.models.CurrentCity
-import com.vodafone.core.models.GetSearchCitiesResponse
+import com.vodafone.data.models.entities.CurrentCityEntity
+import com.vodafone.data.models.dto.GetSearchCitiesResponse
 import com.vodafone.data.room_db.daos.CitiesDao
 import com.vodafone.data.services.CitiesServices
 import com.vodafone.data.utils.Constants.API_KEY
@@ -18,9 +18,9 @@ class CitiesDataSourceImpl @Inject constructor(
     override suspend fun getCitiesByText(query: String): Response<List<GetSearchCitiesResponse>> =
         citiesServices.getCitiesByText(query, API_KEY, CITIES_LIMIT)
 
-    override suspend fun getCurrentCity(): CurrentCity? = dao.getCurrentCity()
+    override suspend fun getCurrentCity(): CurrentCityEntity? = dao.getCurrentCity()
 
-    override suspend fun setCurrentCity(city: CurrentCity) {
+    override suspend fun setCurrentCity(city: CurrentCityEntity) {
         dao.setCurrentCity(city)
     }
 

@@ -45,8 +45,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.material3.android)
 
-    implementation(project(":data"))
-    implementation(project(":core"))
+    implementation(project(":domain"))
 
     implementation(libs.retrofit)
 

@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "WeatherNowAndLater"
 include(":app")
-include(":core")
+include(":domain")
 include(":data")
 include(":city_input")
 include(":current_city")

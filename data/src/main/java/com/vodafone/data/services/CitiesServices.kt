@@ -1,6 +1,6 @@
 package com.vodafone.data.services
 
-import com.vodafone.core.models.GetSearchCitiesResponse
+import com.vodafone.data.models.dto.GetSearchCitiesResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

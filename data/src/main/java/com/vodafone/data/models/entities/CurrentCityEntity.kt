@@ -1,13 +1,13 @@
-package com.vodafone.core.models
+package com.vodafone.data.models.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "current_city")
-data class CurrentCity(
+data class CurrentCityEntity(
 
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int?,
 
     val name: String,
 

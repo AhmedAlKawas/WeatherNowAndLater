@@ -27,7 +27,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.vodafone.core.models.GetSearchCitiesResponse
+import com.vodafone.domain.models.City
 import kotlinx.coroutines.delay
 
 @Composable
@@ -91,16 +91,16 @@ fun SearchCityScreen(navController: NavController, viewModel: CitiesViewModel = 
 }
 
 @Composable
-fun CityItem(city: GetSearchCitiesResponse, onClick: () -> Unit) {
+fun CityItem(city: City, onClick: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onClick() }
             .padding(8.dp)
     ) {
-        city.name?.let { name -> Text(text = name, fontWeight = FontWeight.Bold) }
+        Text(text = city.name, fontWeight = FontWeight.Bold)
         Row {
-            city.state?.let { state -> Text(text = state) }
+            Text(text = city.state)
             city.country?.let { country -> Text(text = " ,$country") }
         }
     }

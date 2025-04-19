@@ -1,13 +1,12 @@
 package com.vodafone.city_input.use_cases
 
-import com.vodafone.core.models.GetSearchCitiesResponse
-import com.vodafone.city_input.repo.CitiesRepo
-import retrofit2.Response
+import com.vodafone.domain.models.City
+import com.vodafone.domain.repos.CitiesRepo
 import javax.inject.Inject
 
 class GetCitiesByText @Inject constructor(private val repo: CitiesRepo) {
 
-    suspend operator fun invoke(query: String): Response<List<GetSearchCitiesResponse>> =
+    suspend operator fun invoke(query: String): List<City>? =
         repo.getCitiesByText(query)
 
 }

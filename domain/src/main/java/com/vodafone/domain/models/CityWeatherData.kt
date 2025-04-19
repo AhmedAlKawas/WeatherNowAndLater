@@ -1,4 +1,4 @@
-package com.vodafone.core.models
+package com.vodafone.domain.models
 
 data class CityWeatherData(
     val name: String?,

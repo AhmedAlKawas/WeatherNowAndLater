@@ -1,6 +1,7 @@
-package com.vodafone.core.models.getDailyForecastResponse
+package com.vodafone.data.models.dto.getDailyForecastResponse
 
 import com.google.gson.annotations.SerializedName
+import com.vodafone.core.models.getDailyForecastResponse.List
 
 data class GetDailyForecastResponse(
 

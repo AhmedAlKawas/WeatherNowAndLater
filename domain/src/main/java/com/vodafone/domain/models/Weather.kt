@@ -1,4 +1,4 @@
-package com.vodafone.core.models
+package com.vodafone.domain.models
 
 import com.vodafone.core.R
 

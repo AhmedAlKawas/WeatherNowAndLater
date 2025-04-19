@@ -1,4 +1,4 @@
-package com.vodafone.core.models
+package com.vodafone.data.models.dto
 
 import com.google.gson.annotations.SerializedName
 

@@ -66,7 +66,7 @@ dependencies {
 
     implementation(project(":city_input"))
     implementation(project(":data"))
-    implementation(project(":core"))
+    implementation(project(":domain"))
     implementation(project(":current_city"))
     implementation(project(":forecast"))
 

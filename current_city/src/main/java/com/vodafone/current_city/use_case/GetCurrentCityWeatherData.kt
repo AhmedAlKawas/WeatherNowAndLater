@@ -1,8 +1,7 @@
 package com.vodafone.current_city.use_case
 
-import com.vodafone.core.models.CityWeatherData
-import com.vodafone.current_city.repo.CurrentCityWeatherRepo
-import com.vodafone.data.utils.WeatherUtils.getWeatherFromIcon
+import com.vodafone.domain.models.CityWeatherData
+import com.vodafone.domain.repos.CurrentCityWeatherRepo
 import javax.inject.Inject
 
 class GetCurrentCityWeatherData @Inject constructor(
@@ -22,16 +21,14 @@ class GetCurrentCityWeatherData @Inject constructor(
                 )
 
 
-            if (currentCityWeather.isSuccessful) {
+            if (currentCityWeather != null) {
 
-                val cityWeatherData = CityWeatherData(
+                val cityWeatherData = currentCityWeather.copy(
                     name = currentCity.name,
                     state = currentCity.state,
-                    country = currentCity.country,
-                    temperature = currentCityWeather.body()?.main?.temp,
-                    condition = currentCityWeather.body()?.weather?.get(0)?.main,
-                    weather = getWeatherFromIcon(currentCityWeather.body()?.weather?.get(0)?.icon)
+                    country = currentCity.country
                 )
+
                 return cityWeatherData
 
             } else

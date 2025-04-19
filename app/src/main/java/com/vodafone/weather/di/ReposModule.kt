@@ -1,13 +1,13 @@
 package com.vodafone.weather.di
 
-import com.vodafone.city_input.repo.CitiesRepo
-import com.vodafone.city_input.repo.CitiesRepoImpl
-import com.vodafone.current_city.repo.CurrentCityWeatherRepo
-import com.vodafone.current_city.repo.CurrentCityWeatherRepoImpl
+import com.vodafone.domain.repos.CitiesRepo
+import com.vodafone.data.repos.CitiesRepoImpl
+import com.vodafone.domain.repos.CurrentCityWeatherRepo
+import com.vodafone.data.repos.CurrentCityWeatherRepoImpl
 import com.vodafone.data.data_sources.cities.CitiesDataSource
 import com.vodafone.data.data_sources.weather.WeatherDataSource
-import com.vodafone.forecast.repo.ForeCastRepo
-import com.vodafone.forecast.repo.ForeCastRepoImpl
+import com.vodafone.domain.repos.ForeCastRepo
+import com.vodafone.data.repos.ForeCastRepoImpl
 import com.vodafone.weather.repo.CurrentCityRepo
 import com.vodafone.weather.repo.CurrentCityRepoImpl
 import dagger.Module

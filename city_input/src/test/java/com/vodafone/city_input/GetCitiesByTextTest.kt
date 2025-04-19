@@ -1,8 +1,8 @@
 package com.vodafone.city_input
 
-import com.vodafone.city_input.repo.CitiesRepo
 import com.vodafone.city_input.use_cases.GetCitiesByText
-import com.vodafone.core.models.GetSearchCitiesResponse
+import com.vodafone.domain.models.City
+import com.vodafone.domain.repos.CitiesRepo
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -10,7 +10,6 @@ import org.junit.Test
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
 import org.mockito.kotlin.any
-import retrofit2.Response
 
 class GetCitiesByTextTest {
 
@@ -18,7 +17,7 @@ class GetCitiesByTextTest {
     private lateinit var mockRepo: CitiesRepo
 
     @Before
-    fun setup(){
+    fun setup() {
 
         mockRepo = mock() // Mock the repository
         getCitiesByText = GetCitiesByText(mockRepo) // Inject the mock repository
@@ -29,28 +28,34 @@ class GetCitiesByTextTest {
     fun `invoke should return cities from repo`() = runBlocking {
         // Arrange
         val query = "Cairo"
-        val expectedCities = listOf(GetSearchCitiesResponse("Cairo", 1.0))
-        `when`(mockRepo.getCitiesByText(any())).thenReturn(Response.success(expectedCities))
+        val expectedCities = listOf(
+            City(
+                "Cairo", "State",
+                country = null,
+                latitude = null,
+                longitude = null
+            )
+        )
+        `when`(mockRepo.getCitiesByText(any())).thenReturn(expectedCities)
 
         // Act
         val result = getCitiesByText(query)
 
         // Assert
-        assertEquals(expectedCities, result.body())
+        assertEquals(expectedCities, result)
     }
 
     @Test
     fun `invoke should return error response when repo fails`() = runBlocking {
         // Arrange
         val query = "Unknown"
-        `when`(mockRepo.getCitiesByText(any())).thenReturn(Response.error(404, null))
+        `when`(mockRepo.getCitiesByText(any())).thenReturn(null)
 
         // Act
         val result = getCitiesByText(query)
 
         // Assert
-        assertEquals(404, result.code())
-        assertEquals(null, result.body())
+        assertEquals(null, result)
     }
 
 }

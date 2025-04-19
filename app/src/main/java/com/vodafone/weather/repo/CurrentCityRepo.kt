@@ -1,9 +1,9 @@
 package com.vodafone.weather.repo
 
-import com.vodafone.core.models.CurrentCity
+import com.vodafone.data.models.entities.CurrentCityEntity
 
 interface CurrentCityRepo {
 
-    suspend fun getCurrentCity(): CurrentCity?
+    suspend fun getCurrentCity(): CurrentCityEntity?
 
 }
